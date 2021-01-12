@@ -163,6 +163,7 @@ int main(char args[]) {
 		case WIN:
 			printf("WIN\n");	
 	}
+	system("pause");
 
 	return 0;
 }
