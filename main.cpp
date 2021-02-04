@@ -1,7 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <time.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstdbool>
+#include <ctime>
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
 
 #define LENGTH 3
 #define PLAYER 1
@@ -99,7 +102,7 @@ int checkTicTacToe(char a[LENGTH][LENGTH], char sym[2], int player) {
 	return -1;
 }
 
-int main(char args[]) {
+int main() {
 	char moves[LENGTH][LENGTH];
 	char symbols[2] = {'X', 'O'};
 	char symbol;
@@ -115,6 +118,30 @@ int main(char args[]) {
 
 	initArray(moves);
 	myTurn = whoPlaysFirst();
+
+	{
+		int width = 480;
+		int height = 320;
+
+		Texture t1,t2, t3;
+	    t1.loadFromFile("images/x.png");
+	    Sprite sprite1(t1);
+
+		RenderWindow window(VideoMode(width, height), "Snake Game!");
+
+		while (window.isOpen()) {
+			Event e;
+	    	while (window.pollEvent(e)) {
+	    		if (e.type == Event::Closed)
+	    			window.close();
+	    	}
+
+	    	sprite1.setPosition(0, 0);
+            window.draw(sprite1);
+
+			window.display();
+		}
+	}
 
 
     ////Here start the game////
