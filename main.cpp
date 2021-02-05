@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <cstdlib>
-#include <cstdbool>
 #include <ctime>
 #include <SFML/Graphics.hpp>
 
@@ -120,14 +119,17 @@ int main() {
 	myTurn = whoPlaysFirst();
 
 	{
-		int width = 480;
-		int height = 320;
+		int width = 512;
+		int height = 512;
 
 		Texture t1,t2, t3;
-	    t1.loadFromFile("images/x.png");
-	    Sprite sprite1(t1);
+		if (!t1.loadFromFile("images/x-medium.png"))
+			return 1;
+	    Sprite sprite1;
+	    sprite1.setTexture(t1);
 
-		RenderWindow window(VideoMode(width, height), "Snake Game!");
+		RenderWindow window(VideoMode(width, height), "tic-tac-toe");
+		window.setFramerateLimit(60);
 
 		while (window.isOpen()) {
 			Event e;
@@ -136,7 +138,9 @@ int main() {
 	    			window.close();
 	    	}
 
-	    	sprite1.setPosition(0, 0);
+	    	window.clear(Color::White);
+
+	    	//sprite1.setPosition(5, 5);
             window.draw(sprite1);
 
 			window.display();
