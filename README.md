@@ -1,4 +1,4 @@
-![plot](./logo.png)
+![plot](./logo_alt.png)
 
 This is a Tic-Tac-Toe command line game.
 
